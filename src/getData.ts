@@ -1,7 +1,7 @@
 import { API_URL } from "./config";
 import { ApiData } from "./json";
 
-export function get_data(): ApiData[] {
+export function getData(): ApiData[] {
     try {
         const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
         xmlHttp.open("GET", API_URL, false);
