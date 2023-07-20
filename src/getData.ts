@@ -8,7 +8,8 @@ export function getData(): ApiData[] {
         xmlHttp.send();
         return JSON.parse(xmlHttp.response).response.play_result_list as ApiData[];
     } catch (e) {
-        alert("Error: データの取得に失敗しました。");
-        throw Error("Error: データの取得に失敗しました。");
+        const errMsg = "Error: データの取得に失敗しました。";
+        alert(errMsg);
+        throw Error(errMsg);
     }
 }

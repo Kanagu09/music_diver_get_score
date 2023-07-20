@@ -10,8 +10,9 @@ export function makeCsv(allData: SongData[]): void {
 
 function checkData(allData: SongData[]): void {
     if (allData.length === 0) {
-        alert("Error: 参照データが存在しません。");
-        throw Error("Error: 参照データが存在しません。");
+        const errMsg = "Error: 参照データが存在しません。";
+        alert(errMsg);
+        throw Error(errMsg);
     }
 }
 
