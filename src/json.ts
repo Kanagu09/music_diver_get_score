@@ -49,8 +49,8 @@ export class SongData {
     status_extreme: string = "";
     rank_extreme: string = "";
 
-    constructor(music_id: number, title: string, artist: string, genre: string) {
-        this.music_id = music_id;
+    constructor(musicId: number, title: string, artist: string, genre: string) {
+        this.music_id = musicId;
         this.title = title;
         this.artist = artist;
         this.genre = genre;

@@ -49,34 +49,34 @@ export function format(apiData: ApiData[]): SongData[] {
     return allData;
 }
 
-function status(result_data: ApiData): string {
-    if (result_data.epic_count > 0)
+function status(resultData: ApiData): string {
+    if (resultData.epic_count > 0)
         return "ALL CRITICAL";
-    if (result_data.all_perfect_count > 0)
+    if (resultData.all_perfect_count > 0)
         return "ALL PERFECT";
-    if (result_data.full_combo_count > 0)
+    if (resultData.full_combo_count > 0)
         return "FULL COMBO";
-    if (result_data.clear_count >= 0)
+    if (resultData.clear_count >= 0)
         return "CLEAR";
     return "FAILED";
 };
 
-function rank(result_data: ApiData): string {
-    if (result_data.rank_sss_count > 0)
+function rank(resultData: ApiData): string {
+    if (resultData.rank_sss_count > 0)
         return "SSS";
-    if (result_data.rank_ss_count > 0)
+    if (resultData.rank_ss_count > 0)
         return "SS";
-    if (result_data.rank_s_count > 0)
+    if (resultData.rank_s_count > 0)
         return "S";
-    if (result_data.rank_a_count > 0)
+    if (resultData.rank_a_count > 0)
         return "A";
-    if (result_data.rank_b_count > 0)
+    if (resultData.rank_b_count > 0)
         return "B";
-    if (result_data.rank_c_count > 0)
+    if (resultData.rank_c_count > 0)
         return "C";
-    if (result_data.rank_d_count > 0)
+    if (resultData.rank_d_count > 0)
         return "D";
-    if (result_data.rank_e_count > 0)
+    if (resultData.rank_e_count > 0)
         return "E";
     return "";
 };

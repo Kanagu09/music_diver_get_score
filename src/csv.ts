@@ -1,9 +1,9 @@
 import { FILE_NAME } from "./config";
 import { SongData } from "./json";
 
-export function make_csv(allData: SongData[]): void {
+export function makeCsv(allData: SongData[]): void {
     checkData(allData);
-    console.info('filename:', FILE_NAME);
+    console.info("filename:", FILE_NAME);
     const csvStr: string = toString(allData);
     save(csvStr);
 }
@@ -18,14 +18,14 @@ function checkData(allData: SongData[]): void {
 function toString(allData: SongData[]): string {
     const keys: string[] = Object.keys(allData[0]);
     // @ts-ignore
-    const array_data = allData.map((record) => (keys.map((key) => record[key])));
+    const arrayData = allData.map((record) => (keys.map((key) => record[key])));
     // @ts-ignore
-    let csv_str = [].concat([keys], array_data);
-    console.log(csv_str);
+    let csvStr = [].concat([keys], arrayData);
+    console.log(csvStr);
     let prepare = function (field: any): string {
         return '"' + ('' + field).replace(/"/g, '""') + '"';
     }
-    return csv_str.map((record) => (
+    return csvStr.map((record) => (
         // @ts-ignore
         record.map((field) => (prepare(field))).join(',')
     )).join('\n');
