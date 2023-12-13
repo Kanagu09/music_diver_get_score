@@ -1,9 +1,9 @@
-import { ApiData } from "./json";
+import { ApiScoreData } from "./json";
 import { SongData } from "./json";
 
-export function format(apiData: ApiData[]): SongData[] {
+export function format(apiScoreData: ApiScoreData[]): SongData[] {
     let allData: SongData[] = [];
-    for (const data of apiData) {
+    for (const data of apiScoreData) {
         let index: number = -1;
         // 存在するか確認
         for (let i = 0; i < allData.length; i++) {
@@ -49,7 +49,7 @@ export function format(apiData: ApiData[]): SongData[] {
     return allData;
 }
 
-function status(resultData: ApiData): string {
+function status(resultData: ApiScoreData): string {
     if (resultData.epic_count > 0)
         return "ALL CRITICAL";
     if (resultData.all_perfect_count > 0)
@@ -61,7 +61,7 @@ function status(resultData: ApiData): string {
     return "FAILED";
 };
 
-function rank(resultData: ApiData): string {
+function rank(resultData: ApiScoreData): string {
     if (resultData.rank_sss_count > 0)
         return "SSS";
     if (resultData.rank_ss_count > 0)

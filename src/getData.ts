@@ -1,12 +1,12 @@
-import { API_URL } from "./config";
-import { ApiData } from "./json";
+import { API_SCORE_URL } from "./config";
+import { ApiScoreData } from "./json";
 
-export function getData(): ApiData[] {
+export function getData(): ApiScoreData[] {
     try {
         const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
-        xmlHttp.open("GET", API_URL, false);
+        xmlHttp.open("GET", API_SCORE_URL, false);
         xmlHttp.send();
-        return JSON.parse(xmlHttp.response).response.play_result_list as ApiData[];
+        return JSON.parse(xmlHttp.response).response.play_result_list as ApiScoreData[];
     } catch (e) {
         const errMsg = "Error: データの取得に失敗しました。";
         alert(errMsg);

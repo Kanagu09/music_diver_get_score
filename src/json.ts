@@ -1,4 +1,4 @@
-export type ApiData = {
+export type ApiScoreData = {
     "card_id": string,
     "music_id": number,
     "difficulty_id": 0 | 1 | 2 | 3,
