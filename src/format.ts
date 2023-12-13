@@ -1,17 +1,41 @@
 import { ApiScoreData } from "./json";
+import { ApiSongData } from "./json";
 import { SongData } from "./json";
 
-export function format(apiScoreData: ApiScoreData[]): SongData[] {
+export function format(apiScoreData: ApiScoreData[], apiSongData: ApiSongData[]): SongData[] {
     let allData: SongData[] = [];
-    for (const data of apiScoreData) {
-        let index: number = -1;
-        // 存在するか確認
-        for (let i = 0; i < allData.length; i++) {
-            if (allData[i].music_id === data.music_id) {
-                index = i;
-                break;
+    // 楽曲データ
+    for (const data of apiSongData) {
+        const song: SongData = new SongData(
+            data.music_id,
+            data.music_title,
+            data.artist_name,
+            data.genre_name
+        );
+        // 難易度
+        for (const chart of data.chart_data) {
+            switch (chart.difficulty_id) {
+                case 0:
+                    song.level_easy = chart.level_id + 1;
+                    break;
+                case 1:
+                    song.level_normal = chart.level_id + 1;
+                    break;
+                case 2:
+                    song.level_hard = chart.level_id + 1;
+                    break;
+                case 3:
+                    song.level_extreme = chart.level_id + 1;
+                    break;
             }
         }
+        allData.push(song);
+    }
+    allData.sort((a, b) => a.music_id - b.music_id);
+    // スコアデータ
+    for (const data of apiScoreData) {
+        // 存在するか確認
+        let index: number = allData.findIndex((all) => all.music_id === data.music_id);
         // 存在しない場合，作成，曲名等設定
         if (index === -1) {
             const song: SongData = new SongData(

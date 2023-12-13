@@ -31,20 +31,50 @@ export type ApiScoreData = {
     "artist_name": string
 };
 
+export type ApiSongData = {
+    "music_id": number,
+    "genre_id": number,
+    "artist_id": number,
+    "music_title_id": number,
+    "bpm": number,
+    "advance_deliver_start_date": string,
+    "deliver_start_date": string,
+    "deliver_end_date": string,
+    "create_mode_flag": number,
+    "locked_state": number,
+    "genre_name": string,
+    "artist_name": string,
+    "music_title": string,
+    "chart_data": ApiChartData[],
+};
+
+export type ApiChartData = {
+    "chart_id": number,
+    "music_id": number,
+    "chart_type_id": number,
+    "difficulty_id": 0 | 1 | 2 | 3,
+    "level_id": number,
+    "level_name": string,
+};
+
 export class SongData {
     music_id: number;
     title: string;
     artist: string;
     genre: string;
+    level_easy: number = 0;
     score_easy: number = 0;
     status_easy: string = "";
     rank_easy: string = "";
+    level_normal: number = 0;
     score_normal: number = 0;
     status_normal: string = "";
     rank_normal: string = "";
+    level_hard: number = 0;
     score_hard: number = 0;
     status_hard: string = "";
     rank_hard: string = "";
+    level_extreme: number = 0;
     score_extreme: number = 0;
     status_extreme: string = "";
     rank_extreme: string = "";
