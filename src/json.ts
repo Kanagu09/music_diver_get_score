@@ -1,3 +1,4 @@
+// API_SCORE_URL
 export type ApiScoreData = {
     "card_id": string,
     "music_id": number,
@@ -31,7 +32,26 @@ export type ApiScoreData = {
     "artist_name": string
 };
 
+// API_SONG_URL
 export type ApiSongData = {
+    "music_id": number,
+    "genre_id": number,
+    "artist_id": number,
+    "music_title_id": number,
+    "bpm": number,
+    "advance_deliver_start_date": string,
+    "deliver_start_date": string,
+    "deliver_end_date": string,
+    "create_mode_flag": number,
+    "locked_state": number,
+    "genre_name": string,
+    "artist_name": string,
+    "music_title": string,
+    "chart_data": ApiChartData[],
+};
+
+// API_RECENT_URL
+export type ApiRecentData = {
     "music_id": number,
     "genre_id": number,
     "artist_id": number,
@@ -57,11 +77,13 @@ export type ApiChartData = {
     "level_name": string,
 };
 
+// export
 export class SongData {
     music_id: number;
     title: string;
     artist: string;
     genre: string;
+    recent: string = "";
     level_easy: number = 0;
     score_easy: number = 0;
     status_easy: string = "";

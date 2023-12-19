@@ -1,8 +1,12 @@
-import { ApiScoreData } from "./json";
+import { ApiRecentData, ApiScoreData } from "./json";
 import { ApiSongData } from "./json";
 import { SongData } from "./json";
 
-export function format(apiScoreData: ApiScoreData[], apiSongData: ApiSongData[]): SongData[] {
+export function format(
+    apiScoreData: ApiScoreData[],
+    apiSongData: ApiSongData[],
+    apiRecentData: ApiRecentData[]
+): SongData[] {
     let allData: SongData[] = [];
     // 楽曲データ
     for (const data of apiSongData) {
@@ -69,6 +73,22 @@ export function format(apiScoreData: ApiScoreData[], apiSongData: ApiSongData[])
                 allData[index].rank_extreme = rank(data);
                 break;
         }
+    }
+    // レーティング対象曲データ
+    for (const data of apiRecentData) {
+        // 存在するか確認
+        let index: number = allData.findIndex((all) => all.music_id === data.music_id);
+        // 存在しない場合，作成，曲名等設定
+        if (index === -1) {
+            const song: SongData = new SongData(
+                data.music_id,
+                data.music_title,
+                data.artist_name,
+                data.genre_name
+            );
+            index = allData.push(song) - 1;
+        }
+        allData[index].recent = "o";
     }
     return allData;
 }
