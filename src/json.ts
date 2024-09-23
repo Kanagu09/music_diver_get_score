@@ -1,8 +1,8 @@
-// API_SCORE_URL
-export type ApiScoreData = {
+// API_RECORD_URL
+export type ApiRecordData = {
     "card_id": string,
     "music_id": number,
-    "difficulty_id": 0 | 1 | 2 | 3,
+    "difficulty_id": DifficultyId,
     "score": number,
     "score_update_at": string,
     "critical_num": number,
@@ -32,8 +32,8 @@ export type ApiScoreData = {
     "artist_name": string
 };
 
-// API_SONG_URL
-export type ApiSongData = {
+// API_MUSIC_URL
+export type ApiMusicData = {
     "music_id": number,
     "genre_id": number,
     "artist_id": number,
@@ -50,32 +50,30 @@ export type ApiSongData = {
     "chart_data": ApiChartData[],
 };
 
-// API_RECENT_URL
-export type ApiRecentData = {
+// API_RATING_URL
+export type ApiRatingData = {
+    "card_id": string,
     "music_id": number,
-    "genre_id": number,
-    "artist_id": number,
-    "music_title_id": number,
-    "bpm": number,
-    "advance_deliver_start_date": string,
-    "deliver_start_date": string,
-    "deliver_end_date": string,
-    "create_mode_flag": number,
-    "locked_state": number,
-    "genre_name": string,
-    "artist_name": string,
+    "difficulty_id": DifficultyId,
+    "score": number,
+    "all_perfect_count": number,
+    "full_combo_count": number,
+    "level_id": number,
+    "rate": number,
     "music_title": string,
-    "chart_data": ApiChartData[],
+    "artist_name": string,
 };
 
 export type ApiChartData = {
     "chart_id": number,
     "music_id": number,
     "chart_type_id": number,
-    "difficulty_id": 0 | 1 | 2 | 3,
+    "difficulty_id": DifficultyId,
     "level_id": number,
     "level_name": string,
 };
+
+type DifficultyId = 0 | 1 | 2 | 3 | 4;
 
 // export
 export class SongData {
@@ -83,23 +81,36 @@ export class SongData {
     title: string;
     artist: string;
     genre: string;
-    recent: string = "";
-    level_easy: number = 0;
-    score_easy: number = 0;
-    status_easy: string = "";
-    rank_easy: string = "";
-    level_normal: number = 0;
-    score_normal: number = 0;
-    status_normal: string = "";
-    rank_normal: string = "";
-    level_hard: number = 0;
-    score_hard: number = 0;
-    status_hard: string = "";
-    rank_hard: string = "";
-    level_extreme: number = 0;
-    score_extreme: number = 0;
-    status_extreme: string = "";
-    rank_extreme: string = "";
+
+    rating_easy: null | string = null;
+    level_easy: null | number = null;
+    score_easy: null | number = null;
+    status_easy: null | string = null;
+    rank_easy: null | string = null;
+
+    rating_normal: null | string = null;
+    level_normal: null | number = null;
+    score_normal: null | number = null;
+    status_normal: null | string = null;
+    rank_normal: null | string = null;
+
+    rating_hard: null | string = null;
+    level_hard: null | number = null;
+    score_hard: null | number = null;
+    status_hard: null | string = null;
+    rank_hard: null | string = null;
+
+    rating_extreme: null | string = null;
+    level_extreme: null | number = null;
+    score_extreme: null | number = null;
+    status_extreme: null | string = null;
+    rank_extreme: null | string = null;
+
+    rating_abyss: null | string = null;
+    level_abyss: null | number = null;
+    score_abyss: null | number = null;
+    status_abyss: null | string = null;
+    rank_abyss: null | string = null;
 
     constructor(musicId: number, title: string, artist: string, genre: string) {
         this.music_id = musicId;

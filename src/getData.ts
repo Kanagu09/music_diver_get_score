@@ -1,16 +1,16 @@
-import { API_SCORE_URL } from "./config";
-import { API_SONG_URL } from "./config";
-import { API_RECENT_URL } from "./config";
-import { ApiScoreData } from "./json";
-import { ApiSongData } from "./json";
-import { ApiRecentData } from "./json";
+import { API_RECORD_URL } from "./config";
+import { API_MUSIC_URL } from "./config";
+import { API_RATING_URL } from "./config";
+import { ApiRecordData } from "./json";
+import { ApiMusicData } from "./json";
+import { ApiRatingData } from "./json";
 
-export function getScoreData(): ApiScoreData[] {
+export function getScoreData(): ApiRecordData[] {
     try {
         const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
-        xmlHttp.open("GET", API_SCORE_URL, false);
+        xmlHttp.open("GET", API_RECORD_URL, false);
         xmlHttp.send();
-        return JSON.parse(xmlHttp.response).response.play_result_list as ApiScoreData[];
+        return JSON.parse(xmlHttp.response).response.play_result_list as ApiRecordData[];
     } catch (e) {
         const errMsg = "Error: スコアデータの取得に失敗しました。";
         alert(errMsg);
@@ -18,12 +18,12 @@ export function getScoreData(): ApiScoreData[] {
     }
 }
 
-export function getSongData(): ApiSongData[] {
+export function getSongData(): ApiMusicData[] {
     try {
         const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
-        xmlHttp.open("GET", API_SONG_URL, false);
+        xmlHttp.open("GET", API_MUSIC_URL, false);
         xmlHttp.send();
-        return JSON.parse(xmlHttp.response).response.music_list as ApiSongData[];
+        return JSON.parse(xmlHttp.response).response.music_list as ApiMusicData[];
     } catch (e) {
         const errMsg = "Error: 楽曲データの取得に失敗しました。";
         alert(errMsg);
@@ -31,12 +31,12 @@ export function getSongData(): ApiSongData[] {
     }
 }
 
-export function getRecentData(): ApiRecentData[] {
+export function getRecentData(): ApiRatingData[] {
     try {
         const xmlHttp: XMLHttpRequest = new XMLHttpRequest();
-        xmlHttp.open("GET", API_RECENT_URL, false);
+        xmlHttp.open("GET", API_RATING_URL, false);
         xmlHttp.send();
-        return JSON.parse(xmlHttp.response).response as ApiRecentData[];
+        return JSON.parse(xmlHttp.response).response as ApiRatingData[];
     } catch (e) {
         const errMsg = "Error: レーティング対象曲データの取得に失敗しました。";
         alert(errMsg);

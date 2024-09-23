@@ -24,6 +24,7 @@ function toString(allData: SongData[]): string {
     let csvStr = [].concat([keys], arrayData);
     console.log(csvStr);
     let prepare = function (field: any): string {
+        if (field == null) { return ''; }
         return '"' + ('' + field).replace(/"/g, '""') + '"';
     }
     return csvStr.map((record) => (
